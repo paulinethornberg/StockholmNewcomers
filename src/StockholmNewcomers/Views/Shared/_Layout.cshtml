@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/app.css" rel="stylesheet" />
+    <link href="~/css/foundation.css" rel="stylesheet" />
+</head>
+<body>
+    <img src="~/Images/bg_header_1.png" />
+    <header class="header">
+        <h2 class="headline">Stockholm  <small>for</small> Newcomers</h2>
+        <ul class="header-subnav is-dropdown-menu" data-dropdown-menu>
+            <li><a id="menu" href="/home/index" class="is-active">Organisations</a></li>
+            <li><a id="menu" href="/home/meetingplaces" class="is-active-none">Meeting Places</a></li>
+            <li><a id="menu" href="/home/addorganisation" class="is-active-none">Add Information</a></li>
+            <li class="has-submenu">
+                <a href="/home/addorganisation">Add new</a>
+                <ul class="has-submenu menu vertical" data-submenu>
+                    <li><a href="/home/addorganisation">Add Organisation</a></li>
+                    <li><a href="/home/addmeetingplace">Add Meeting Place</a></li>
+                </ul>
+            </li>
+            <li><a id="menu" href="/home/about" class="is-active-none" target="_blank">About</a></li>
+        </ul>
+    </header>
+    <div class="center">
+        @RenderBody()
+    </div>
+
+<footer>
+    <div class="wrap row small-up-1 medium-up-3">
+        <div class="column"> HEj </div>
+        <div class="column">HEj </div>
+        <div class="column">HEj </div>
+    </div>
+</footer>
+
+    <script src="~/js/vendor/jquery.js"></script>
+    <script src="~/js/vendor/foundation.min.js"></script>
+    <script src="~/js/vendor/what-input.js"></script>
+    <script src="~/js/app.js"></script>
+</body>
+</html>

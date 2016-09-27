@@ -1,0 +1,24 @@
+﻿@model OrganisationsVM
+
+<div class="row">
+    <div class="medium-6 columns medium-push-6">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h2>@Model.Name</h2>
+        <p>@Model.Info</p>
+        <p>@Model.Email</p>
+        <p>@Model.Website</p>
+    </div>
+    <div class="medium-6 columns medium-pull-6">
+        <img src="~/Images/Bilder/@Model.Logo" />
+    </div>
+</div>
+
+<div>
+    <p>@Model.Description</p>
+</div>
+

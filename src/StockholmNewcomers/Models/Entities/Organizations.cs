@@ -5,6 +5,13 @@ namespace StockholmNewcomers.Models.Entities
 {
     public partial class Organizations
     {
+        public Organizations()
+        {
+            OrganizationCategoryTags = new HashSet<OrganizationCategoryTags>();
+            OrganizationsTags = new HashSet<OrganizationsTags>();
+            TagsCategoryTags = new HashSet<TagsCategoryTags>();
+        }
+
         public int Id { get; set; }
         public int? Type { get; set; }
         public string Name { get; set; }
@@ -19,5 +26,9 @@ namespace StockholmNewcomers.Models.Entities
         public int? Ord { get; set; }
         public byte? Approve { get; set; }
         public DateTime? AddDate { get; set; }
+
+        public virtual ICollection<OrganizationCategoryTags> OrganizationCategoryTags { get; set; }
+        public virtual ICollection<OrganizationsTags> OrganizationsTags { get; set; }
+        public virtual ICollection<TagsCategoryTags> TagsCategoryTags { get; set; }
     }
 }

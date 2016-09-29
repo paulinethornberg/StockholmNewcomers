@@ -24,11 +24,54 @@ namespace StockholmNewcomers.Models
         {
             //OrganisationsVM OrganisationsToShow = new OrganisationsVM();
 
+            var allTags = GetTagsFromDB();
+
+            var allOrganizationTags = _context.OrganizationsTags.ToList();
+
             var organisations = _context.Organizations
-                .Select(c => new OrganisationsVM {Name = c.Name, Logo = c.Logo, Description = c.Description, Type = c.Type, Summary = c.Summary, Id = c.Id, Email = c.Email, Info = c.Info , Website = c.Website})
+                .Select(c => new OrganisationsVM {
+                    Name = c.Name,
+                    Logo = c.Logo,
+                    Description = c.Description,
+                    Type = c.Type,
+                    Summary = c.Summary,
+                    Id = c.Id,
+                    Email = c.Email,
+                    Info = c.Info ,
+                    Website = c.Website,
+                    Tags = GetTagsForThisOrganization(c.Id,allTags,allOrganizationTags)
+                    })
                 .ToArray();
 
             return organisations;
+        }
+
+        internal List<Tags> GetTagsFromDB()
+        {
+            return _context.Tags.ToList();
+        }
+
+        private List<Tags> GetTagsForThisOrganization(int organizationId,List<Tags> allTags, List<OrganizationsTags> allOrganizationTags)
+        {
+            var tagIdList = allOrganizationTags
+                 .Where(t => t.OrganizationId == organizationId)
+                 .Select(c => c.TagsId)
+                 .ToList();
+
+            List<Tags> taggarna = new List<Tags>();
+            foreach (int id in tagIdList) {
+                taggarna.AddRange(allTags.Where(x => x.Id == id).ToList());
+            }
+            return taggarna;
+            
+            //var intTagId = Convert.ToInt32(tagId);
+
+            //var tags = (from o in OrganizationsTags
+            //    join t in Tags on o.TagsId equals t.Tags
+            //    where 
+            //return _context.Tags
+            //    .Where(c => c.Id = intTagId)
+            //    .SelectMany(p => new Tags { Title = p.Title, })
         }
 
         internal OrganisationsVM GetOrganisationFromId(int id)

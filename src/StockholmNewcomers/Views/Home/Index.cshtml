@@ -13,6 +13,15 @@
 
     <form>
         <div class="button-group">
+           
+           @*@foreach (var organisation in Model)
+           {
+                @foreach (var tag in organisation.Tags)
+                {
+                    <input id="checkbox1" type="checkbox">
+                    <label class="button" for="checkbox1">@tag.Title</label>
+                }
+           }*@
             <input id="checkbox1" type="checkbox">
             <label class="button" for="checkbox1">Language</label>
             <input id="checkbox2" type="checkbox">
@@ -25,7 +34,7 @@
 </div>
 <div class="center">
     <div class="row small-up-2 large-up-4">
-        ">
+        
         @foreach (var organisation in Model)
         {
             @if (organisation.Type == 0)
@@ -44,7 +53,11 @@
                             }
                             <p><b>@organisation.Name</b></p>
                             <p class="subheader">@organisation.Summary</p>
-                            <p>tags</p>
+                            <div>@foreach (var tag in organisation.Tags)
+                            {
+                                <label class="small" style="background-color: #f9b234">@tag.Title</label>
+                            }
+                            </div>
                         </div>
                     </a>
                 </div>

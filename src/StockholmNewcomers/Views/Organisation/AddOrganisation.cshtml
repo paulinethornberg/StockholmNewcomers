@@ -1,4 +1,5 @@
-﻿
+﻿@model AddOrganisationVM
+
 <br />
 <br />
 <div class="panel m-panel shadow">
@@ -6,14 +7,14 @@
         <div class="small-12 columns">
             <header class="form-header">
                 <h3>
-                    <small>Suggest a new meeting place to add to Stockholm for Newcomers! </small>
+                    <small>Suggest a new organisation to add to Stockholm for Newcomers! </small>
                 </h3>
             </header>
         </div>
     </div>
     <div class="row">
         <div class="small-12 columns">
-            <form>
+            <form method="post" action="AddOrganisation">
                 <div class="row">
                     <div class="small-4 columns">
                         <p class="notice">
@@ -22,19 +23,19 @@
                     </div>
                     <div class="small-8 columns">
                         <div class="form-group-material">
-                            <label class="material-label" for="name">Name</label><input class="material-field" id="name" required="required" type="text">
+                            <label class="material-label" for="name">Name</label><input name="Name" class="material-field" id="name" required="required" type="text">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="small-4 columns">
                         <p class="notice">
-                            Name
+                            Summary
                         </p>
                     </div>
                     <div class="small-8 columns">
                         <div class="form-group-material">
-                            <label class="material-label" for="name">Name</label><input class="material-field" id="name" required="required" type="text">
+                            <label class="material-label" for="name">Name</label><input name="Summary" class="material-field" id="name" required="required" type="text">
                         </div>
                     </div>
                 </div>
@@ -78,31 +79,69 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <p class="notice">
+                                Choose Tags:
+                            </p>
+                        </div>
+                        <div class="small-8 columns">
+                            <div class="form-group-material">
+                                
+                                    <select id="select" multiple>
+                                        <option></option>
+                                        @for (int i = 0; i < 35; i++)
+                                        {
+                                            <option value="@Model.Tags[i].Title"> @Model.Tags[i].Title</option>
+                                        }
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <p class="notice">
+                                Choose Location: 
+                            </p>
+                        </div>
+                        <div class="small-8 columns">
+                            <div class="form-group-material">
+                                <select id="select" required>
+                                    <option></option>
+                                    @for (int i = 35; i < 71; i++)
+                                    {
+                                        <option value="@Model.Tags[i].Title"> @Model.Tags[i].Title</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <label>
-                    Choose location if meetingplace:
+                @*<label>
+
+                    <p>Choose tags for meetingplace:</p>
                     <select>
-                        <option value="husker">Husker</option>
-                        <option value="starbuck">Starbuck</option>
-                        <option value="hotdog">Hot Dog</option>
-                        <option value="apollo">Apollo</option>
+                        @for (int i = 0; i < 35; i++)
+                        {
+                            <option value="@Model.Tags[i].Title"> @Model.Tags[i].Title</option>
+                        }
                     </select>
-                </label>
+                    Choose location:
+                    <select>
+                        @for (int i = 35; i < 71; i++)
+                        {
+                            <option value="@Model.Tags[i].Title"> @Model.Tags[i].Title</option>
+                        }
+                    </select>
+                </label>*@
                 <h4><small>Add (max 3) tags to categorize the organisation or meeting place: </small></h4>
 
                 <div class="button-group">
-                    <input id="checkbox1" type="checkbox">
-                    <label class="button" for="checkbox1">Language</label>
-                    <input id="checkbox2" type="checkbox">
-                    <label class="button" for="checkbox2">Social</label>
-                    <input id="checkbox3" type="checkbox">
-                    <label class="button" for="checkbox3">Information and Support</label>
-                    <input id="checkbox4" type="checkbox">
-                    <label class="button" for="checkbox3">Information and Support</label>
-                    <input id="checkbox5" type="checkbox">
-                    <label class="button" for="checkbox3">Information and Support</label>
-                    <input id="checkbox6" type="checkbox">
-                    <label class="button" for="checkbox3">Information and Support</label>
+                    @for (int i = 0; i < 35; i++)
+                    {
+                        <input id="@Model.Tags[i].Title" type="checkbox">
+                        <label class="button" for="checkbox1">@Model.Tags[i].Title</label>
+                    }
                 </div>
 
                 <div class="row">

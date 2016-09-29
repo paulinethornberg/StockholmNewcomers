@@ -1467,7 +1467,7 @@ kbd {
   padding: 0.85em 1em;
   margin: 0 0 1rem 0;
   font-size: 0.9rem;
-  background-color: #e40b7c;
+  background-color: #f9b234;
   color: #fefefe; }
   [data-whatinput='mouse'] .button {
     outline: 0; }
@@ -1486,7 +1486,7 @@ kbd {
     margin-left: 0;
     margin-right: 0; }
   .button.primary {
-    background-color: #e40b7c;
+    background-color: #f9b234;
     color: #fefefe; }
     .button.primary:hover, .button.primary:focus {
       background-color: #147cc0;
@@ -1516,16 +1516,16 @@ kbd {
       background-color: #da3116;
       color: #fefefe; }
   .button.hollow {
-    border: 1px solid #e40b7c;
-    color: #e40b7c; }
+    border: 1px solid #f9b234;
+    color: #f9b234; }
     .button.hollow, .button.hollow:hover, .button.hollow:focus {
       background-color: transparent; }
     .button.hollow:hover, .button.hollow:focus {
       border-color: #0c4d78;
       color: #0c4d78; }
     .button.hollow.primary {
-      border: 1px solid #e40b7c;
-      color: #e40b7c; }
+      border: 1px solid #f9b234;
+      color: #f9b234; }
       .button.hollow.primary:hover, .button.hollow.primary:focus {
         border-color: #0c4d78;
         color: #0c4d78; }
@@ -1557,7 +1557,7 @@ kbd {
     opacity: 0.25;
     cursor: not-allowed; }
     .button.disabled:hover, .button.disabled:focus, .button[disabled]:hover, .button[disabled]:focus {
-      background-color: #e40b7c;
+      background-color: #f9b234;
       color: #fefefe; }
   .button.dropdown::after {
     content: '';

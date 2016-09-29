@@ -30,29 +30,10 @@ namespace StockholmNewcomers.Controllers
             return View(organisations);
         }
 
-        public IActionResult AddOrganisation()
-        {
-          return View();
-        }
-        [HttpGet]
-        public IActionResult AddMeetingPlace()
-        {
-            return View();
-        }
 
+       
         [HttpPost]
-        public IActionResult AddMeetingPlace(MeetingPlacesVM viewModel)
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> AddOrganisation(OrganisationsVM viewModel)
-        {
-            await dataManager.SaveOrganisationToDB(viewModel);
-
-            return Content("The organisation will be reviewed and if accepted, the info will be added to the catalogue within a few days :) ");
-        }
+       
         public IActionResult About()
         {
             return View();

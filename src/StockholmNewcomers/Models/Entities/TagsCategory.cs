@@ -5,6 +5,11 @@ namespace StockholmNewcomers.Models.Entities
 {
     public partial class TagsCategory
     {
+        public TagsCategory()
+        {
+            OrganizationCategoryTags = new HashSet<OrganizationCategoryTags>();
+        }
+
         public int Id { get; set; }
         public short? Type { get; set; }
         public string Title { get; set; }
@@ -14,5 +19,7 @@ namespace StockholmNewcomers.Models.Entities
         public string Lang { get; set; }
         public short? Approve { get; set; }
         public int? Ord { get; set; }
+
+        public virtual ICollection<OrganizationCategoryTags> OrganizationCategoryTags { get; set; }
     }
 }

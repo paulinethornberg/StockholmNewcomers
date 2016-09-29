@@ -5,6 +5,12 @@ namespace StockholmNewcomers.Models.Entities
 {
     public partial class Tags
     {
+        public Tags()
+        {
+            OrganizationsTags = new HashSet<OrganizationsTags>();
+            TagsCategoryTags = new HashSet<TagsCategoryTags>();
+        }
+
         public int Id { get; set; }
         public short? Type { get; set; }
         public int? Cat { get; set; }
@@ -15,5 +21,8 @@ namespace StockholmNewcomers.Models.Entities
         public short? Approve { get; set; }
         public int? Ord { get; set; }
         public string Lang { get; set; }
+
+        public virtual ICollection<OrganizationsTags> OrganizationsTags { get; set; }
+        public virtual ICollection<TagsCategoryTags> TagsCategoryTags { get; set; }
     }
 }

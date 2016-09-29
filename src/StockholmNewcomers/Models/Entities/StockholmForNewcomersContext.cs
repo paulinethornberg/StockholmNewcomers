@@ -213,6 +213,23 @@ namespace StockholmNewcomers.Models.Entities
                 entity.Property(e => e.Website).HasColumnType("nchar(50)");
             });
 
+            modelBuilder.Entity<OrganizationCategoryTags>(entity =>
+            {
+                entity.ToTable("organization_categoryTags");
+
+                entity.HasOne(d => d.Organization)
+                    .WithMany(p => p.OrganizationCategoryTags)
+                    .HasForeignKey(d => d.OrganizationId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK__organizat__Organ__30C33EC3");
+
+                entity.HasOne(d => d.TagsCategory)
+                    .WithMany(p => p.OrganizationCategoryTags)
+                    .HasForeignKey(d => d.TagsCategoryId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK__organizat__TagsC__31B762FC");
+            });
+
             modelBuilder.Entity<Organizations>(entity =>
             {
                 entity.ToTable("organizations");
@@ -268,6 +285,21 @@ namespace StockholmNewcomers.Models.Entities
                 entity.Property(e => e.Website)
                     .HasColumnName("website")
                     .HasColumnType("varchar(255)");
+            });
+
+            modelBuilder.Entity<OrganizationsTags>(entity =>
+            {
+                entity.HasOne(d => d.Organization)
+                    .WithMany(p => p.OrganizationsTags)
+                    .HasForeignKey(d => d.OrganizationId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK__Organizat__Organ__160F4887");
+
+                entity.HasOne(d => d.Tags)
+                    .WithMany(p => p.OrganizationsTags)
+                    .HasForeignKey(d => d.TagsId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK__Organizat__TagsI__17036CC0");
             });
 
             modelBuilder.Entity<Socials>(entity =>
@@ -394,6 +426,23 @@ namespace StockholmNewcomers.Models.Entities
                     .HasColumnName("type")
                     .HasDefaultValueSql("'0'");
             });
+
+            modelBuilder.Entity<TagsCategoryTags>(entity =>
+            {
+                entity.ToTable("tags_categoryTags");
+
+                entity.HasOne(d => d.Organization)
+                    .WithMany(p => p.TagsCategoryTags)
+                    .HasForeignKey(d => d.OrganizationId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK__tags_cate__Organ__29221CFB");
+
+                entity.HasOne(d => d.Tags)
+                    .WithMany(p => p.TagsCategoryTags)
+                    .HasForeignKey(d => d.TagsId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK__tags_cate__TagsI__2A164134");
+            });
         }
 
         public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
@@ -405,9 +454,12 @@ namespace StockholmNewcomers.Models.Entities
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Localactivities> Localactivities { get; set; }
         public virtual DbSet<Organisations> Organisations { get; set; }
+        public virtual DbSet<OrganizationCategoryTags> OrganizationCategoryTags { get; set; }
         public virtual DbSet<Organizations> Organizations { get; set; }
+        public virtual DbSet<OrganizationsTags> OrganizationsTags { get; set; }
         public virtual DbSet<Socials> Socials { get; set; }
         public virtual DbSet<Tags> Tags { get; set; }
         public virtual DbSet<TagsCategory> TagsCategory { get; set; }
+        public virtual DbSet<TagsCategoryTags> TagsCategoryTags { get; set; }
     }
 }

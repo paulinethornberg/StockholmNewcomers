@@ -21,7 +21,7 @@
     display: inline-block; }
     .header-subnav li a {
       padding: 0.9rem 1rem;
-      font-size: 0.75rem;
+      font-size: 1rem;
       color: #ffe;
       text-transform: uppercase;
       display: block;
@@ -51,14 +51,14 @@ footer{
     background-color: #222
 }
 
-
+/*-------------------BUTTON GROUPS FOR TAGS -------------------------*/
 .button-group input{
   display: none;
 }
 
 .button-group input:checked + label,
 .button-group input:checked + label:active {
-  background-color: #f9b234;
+  background-color: #e40b7c;
 }
 
 /*form STYLE FROM http://codepen.io/kowlor/pen/BNYaoK */

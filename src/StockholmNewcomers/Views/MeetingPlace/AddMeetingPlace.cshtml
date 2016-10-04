@@ -64,40 +64,20 @@
                         <p class="notice">
                             Inputs in any grid
                         </p>
-                    </div>
                     <div class="small-8 columns">
                         <div class="row">
                             <div class="small-8 columns">
                                 <div class="form-group-material">
-                                    <label class="material-label" for="city">City</label><input class="material-field" id="city" type="text">
+                                    <label class="material-label" for="city">Facebook</label><input class="material-field" id="city" type="text">
                                 </div>
                             </div>
                             <div class="small-4 columns">
                                 <div class="form-group-material">
-                                    <label class="material-label" for="zipcode">Zip code</label><input class="material-field" id="zipcode" type="number">
+                                    <label class="material-label" for="zipcode">Twitter</label><input class="material-field" id="zipcode" type="number">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @*<div class="row">
-                        <div class="small-4 columns">
-                            <p class="notice">
-                                Choose Tags:
-                            </p>
-                        </div>
-                        <div class="small-8 columns">
-                            <div class="form-group-material">
-
-                                <select id="select" multiple>
-                                    <option></option>
-                                    @for (int i = 0; i < 35; i++)
-                                    {
-                                        <option value="@Model.Tags[i].Title"> @Model.Tags[i].Title</option>
-                                    }
-                                </select>
-                            </div>
-                        </div>
-                    </div>*@
                     <div class="row">
                         <div class="small-4 columns">
                             <p class="notice">
@@ -108,7 +88,7 @@
                             <div class="form-group-material">
                                 <select id="select" required>
                                     <option></option>
-                                    @for (int i = 35; i < 71; i++)
+                                    @for (int i = 26; i < 62; i++)
                                     {
                                         <option value="@Model.Tags[i].Title"> @Model.Tags[i].Title</option>
                                     }
@@ -120,22 +100,12 @@
                 <h4><small>Add (max 3) tags to categorize the organisation or meeting place: </small></h4>
 
                 <div class="button-group">
-                    @for (int i = 0; i < 35; i++)
+                    @for (int i = 0; i < 26; i++)
                     {
-                        <input id="@Model.Tags[i].Title" type="checkbox">
+                        <input id="@Model.Tags[i].Title" type="">
                         <label class="button" for="checkbox1">@Model.Tags[i].Title</label>
                     }
-                    @*<label class="button" for="checkbox1">Language</label>
-                    <input id="checkbox2" type="checkbox">
-                    <label class="button" for="checkbox2">Social</label>
-                    <input id="checkbox3" type="checkbox">
-                    <label class="button" for="checkbox3">Information and Support</label>
-                    <input id="checkbox4" type="checkbox">
-                    <label class="button" for="checkbox3">Information and Support</label>
-                    <input id="checkbox5" type="checkbox">
-                    <label class="button" for="checkbox3">Information and Support</label>
-                    <input id="checkbox6" type="checkbox">
-                    <label class="button" for="checkbox3">Information and Support</label>*@
+                   
                 </div>
 
                 <div class="row">

@@ -30,16 +30,28 @@
                 <div class="row">
                     <div class="small-4 columns">
                         <p class="notice">
-                            Summary
+                            Summary (max xxx characters)
                         </p>
                     </div>
                     <div class="small-8 columns">
                         <div class="form-group-material">
-                            <label class="material-label" for="name">Name</label><input name="Summary" class="material-field" id="name" required="required" type="text">
+                            <label class="material-label" for="Summary">Summary</label><input name="Summary" class="material-field" id="name" required="required" type="text">
                         </div>
                     </div>
                 </div>
                 <div class="row">
+                    <div class="small-4 columns">
+                        <p class="notice">
+                            Description (long)
+                        </p>
+                    </div>
+                    <div class="small-8 columns">
+                        <div class="form-group-material">
+                            <label class="material-label" for="Description">Description</label><textarea name="Description" class="material-field" id="summary" required="required" type="text"></textarea>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="row">
                     <div class="small-4 columns">
                         <p class="notice">
                             Input with an error
@@ -50,9 +62,13 @@
                             <label class="material-label" for="firstname">Summary of activity/purpose (max 120 characters)</label><input class="material-field" id="firstname" type="text"><small class="error">Your firstname can't be a number.</small>
                         </div>
                     </div>
-                </div>
+                </div>*@
                 <div class="row">
-                    <div class="small-4 columns"></div>
+                    <div class="small-4 columns">
+                        <p class="notice">
+                            Email
+                        </p>
+                    </div>
                     <div class="small-8 columns">
                         <div class="form-group-material">
                             <label class="material-label" for="email">E-mail</label><input class="material-field" id="email" type="email">
@@ -82,6 +98,18 @@
                     <div class="row">
                         <div class="small-4 columns">
                             <p class="notice">
+                                Image
+                            </p>
+                        </div>
+                        <div class="small-8 columns">
+                            <div class="form-group-material">
+                                <input type="file" id="uploadEditorImage" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <p class="notice">
                                 Choose Tags:
                             </p>
                         </div>
@@ -90,7 +118,7 @@
                                 
                                     <select id="select" multiple>
                                         <option></option>
-                                        @for (int i = 0; i < 35; i++)
+                                        @for (int i = 0; i < 26; i++)
                                         {
                                             <option value="@Model.Tags[i].Title"> @Model.Tags[i].Title</option>
                                         }
@@ -108,7 +136,7 @@
                             <div class="form-group-material">
                                 <select id="select" required>
                                     <option></option>
-                                    @for (int i = 35; i < 71; i++)
+                                    @for (int i = 26; i < 62; i++)
                                     {
                                         <option value="@Model.Tags[i].Title"> @Model.Tags[i].Title</option>
                                     }
@@ -137,7 +165,7 @@
                 <h4><small>Add (max 3) tags to categorize the organisation or meeting place: </small></h4>
 
                 <div class="button-group">
-                    @for (int i = 0; i < 35; i++)
+                    @for (int i = 0; i < 26; i++)
                     {
                         <input id="@Model.Tags[i].Title" type="checkbox">
                         <label class="button" for="checkbox1">@Model.Tags[i].Title</label>
@@ -155,6 +183,9 @@
 </div>
 
 
+
+
 <link href="~/css/app.css" rel="stylesheet" />
 
 <script src="~/js/vendor/jquery.js"></script>
+<script src="~/js/photo.js"></script>

@@ -37,10 +37,20 @@ namespace StockholmNewcomers.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> AddOrganisation(OrganisationsVM viewModel)
+
         {
+
+
             await dataManager.SaveOrganisationToDB(viewModel);
 
             return Content("The organisation will be reviewed and if accepted, the info will be added to the catalogue within a few days :) ");
+        }
+
+        public IActionResult GetResultByCategory(string checkbox1, bool checkResp = false)
+        {
+            //var result = dataManager.SortOrgByCat(categoryNum);
+
+            return Content("hello");
         }
 
     }

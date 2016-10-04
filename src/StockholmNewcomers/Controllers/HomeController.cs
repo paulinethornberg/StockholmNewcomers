@@ -25,26 +25,16 @@ namespace StockholmNewcomers.Controllers
         public IActionResult Index()
         {
             
-            var organisations = dataManager.GetOrganisationsFromDB(); 
+            var homePagevM = dataManager.GetOrganisationsFromDB(); 
 
-            return View(organisations);
+            return View(homePagevM);
         }
-
-
-       
-        [HttpPost]
        
         public IActionResult About()
         {
             return View();
         }
 
-        public IActionResult MeetingPlaces()
-        {
-            //var meetingPlaces = dataManager.GetOrganisationsFromDB();
-            var meetingPlaces = dataManager.GetMeetingPlacesFromDB();
 
-            return View(meetingPlaces);
-        }
     }
 }

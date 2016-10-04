@@ -19,6 +19,8 @@ namespace StockholmNewcomers.Models.ViewModels
         public string PhoneNumber { get; set; }
         public int? Type { get; internal set; }
 
+
+        public int CategoryNumber { get; set; }
          public List<TagsCategory> Categories { get; set; }
         public List<Tags> Tags { get; set; }
     }

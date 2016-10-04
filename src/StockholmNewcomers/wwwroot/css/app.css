@@ -61,6 +61,7 @@ footer{
   background-color: #e40b7c;
 }
 
+
 /*form STYLE FROM http://codepen.io/kowlor/pen/BNYaoK */
 body {
   font: 1em/1.45 Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -251,3 +252,6 @@ body {
 
 .js-drilldown-back::before {
   border-color: transparent #fff transparent transparent; }
+
+.hidden {
+    display: none; }

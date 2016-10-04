@@ -20,7 +20,7 @@ namespace StockholmNewcomers.Models
             _userManager = userManager;
         }
 
-        internal OrganisationsVM[] GetOrganisationsFromDB()
+        internal HomePageVM GetOrganisationsFromDB()
         {
             //OrganisationsVM OrganisationsToShow = new OrganisationsVM();
 
@@ -39,11 +39,14 @@ namespace StockholmNewcomers.Models
                     Email = c.Email,
                     Info = c.Info ,
                     Website = c.Website,
-                    Tags = GetTagsForThisOrganization(c.Id,allTags,allOrganizationTags)
+                    Tags = GetTagsForThisOrganization(c.Id,allTags,allOrganizationTags),
                     })
                 .ToArray();
 
-            return organisations;
+            HomePageVM homePageInfo = new HomePageVM();
+            homePageInfo.OrganisationArray = organisations;
+
+            return homePageInfo;
         }
 
         internal List<Tags> GetTagsFromDB()
@@ -57,8 +60,8 @@ namespace StockholmNewcomers.Models
                  .Where(t => t.OrganizationId == organizationId)
                  .Select(c => c.TagsId)
                  .ToList();
-
-            List<Tags> taggarna = new List<Tags>();
+          
+            List < Tags > taggarna = new List<Tags>();
             foreach (int id in tagIdList) {
                 taggarna.AddRange(allTags.Where(x => x.Id == id).ToList());
             }
@@ -72,6 +75,25 @@ namespace StockholmNewcomers.Models
             //return _context.Tags
             //    .Where(c => c.Id = intTagId)
             //    .SelectMany(p => new Tags { Title = p.Title, })
+        }
+
+        internal Organizations[] SortOrgByCat(string id)
+        {
+            int catNum;
+            switch (id)
+            {
+                case "checkbox1":
+                    catNum = 3;
+                    break;
+                case "checkbox2":
+                    catNum = 2;
+                    break;
+                case "checkbox3":
+                    catNum = 4;
+                    break;
+            }
+            Organizations[] orgArray = new Organizations[2];
+            return orgArray;
         }
 
         internal OrganisationsVM GetOrganisationFromId(int id)
@@ -96,10 +118,8 @@ namespace StockholmNewcomers.Models
                 Logo = viewModel.Logo,
                 Description = viewModel.Description,
                 Summary = viewModel.Summary,
-                Info = viewModel.Info,
                 Website = viewModel.Website, 
-                Email = viewModel.Email,
-                PhoneNumber = viewModel.PhoneNumber               
+                Email = viewModel.Email,           
             };
 
             _context.Organisations.Add(organisation);

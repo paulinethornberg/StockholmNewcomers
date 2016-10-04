@@ -1,8 +1,22 @@
-﻿@model OrganisationsVM[]
-<p text-align: center>
+﻿@model HomePageVM
 
-    - find useful organisations and fun meetingplaces where you can practice your Swedish, meet new friends and..""
-</p>
+<link href="~/css/font-awesome.css" rel="stylesheet" />
+<script src="~/js/vendor/jquery.js"></script>
+<script src="~/js/Sort.js"></script>
+
+<div class="row">
+    <div class="medium-6 columns medium-push-6">
+        @for (int i = 0; i < 6; i++)
+        {
+            <br />
+        }
+        <h2>Share information about our community</h2>
+        <p>The purpose of this website is to share useful information about organisations and meetingsplaces where newcomers can come in contact with the local community and find support that isn't governmental</p>
+    </div>
+    <div class="medium-6 columns medium-pull-6">
+        <img src="~/Images/logo.jpg" />
+    </div>
+</div>
 
 <div class="row column">
     <hr>
@@ -10,37 +24,52 @@
 <div class="row column">
 
     <p class="lead"><b>Browse organisations by category: </b> </p>
+    @*<form asp-controller="Organisation" asp-action="GetResultByCategory">*@
+    <div class="button-group">
 
-    <form>
-        <div class="button-group">
-           
-           @*@foreach (var organisation in Model)
-           {
-                @foreach (var tag in organisation.Tags)
-                {
-                    <input id="checkbox1" type="checkbox">
-                    <label class="button" for="checkbox1">@tag.Title</label>
-                }
-           }*@
-            <input id="checkbox1" type="checkbox">
+        @*@foreach (var organisation in Model)
+            {
+                 @foreach (var tag in organisation.Tags)
+                 {
+                     <input id="checkbox1" type="checkbox">
+                     <label class="button" for="checkbox1">@tag.Title</label>
+                 }
+            }*@
+        @* lägg till funktionalitet för att sortera med huvudtaggar: *@
+
+        <br />
+        @*<input id="checkbox1" name ="checkResp" value="true" type="checkbox">
             <label class="button" for="checkbox1">Language</label>
-            <input id="checkbox2" type="checkbox">
+            <input id="checkbox2" name ="checkResp" value="true" type="checkbox">
             <label class="button" for="checkbox2">Community</label>
-            <input id="checkbox3" type="checkbox">
-            <label class="button" for="checkbox3">Information & Support</label>
-        </div>
-    </form>
+            <input id="checkbox3" name ="checkResp" value="true" type="checkbox" >
+            <label class="button" for="checkbox3">Information & Support</label>*@
 
+        @*<input asp-for="CheckBoxLanguage"  />
+            <label asp-for="CheckBoxLanguage">Language</label>
+            <input asp-for="CheckBoxCommunity" />
+            <input asp-for="CheckBoxInfo" />*@
+    </div>
+
+    <label class="large button" id="button123" for="checkbox1" onclick="filter('Language'); changeColor(this)">Language</label>
+    <label class="large button" for="checkbox1" onclick="filter('Community')">Community</label>
+    <label class="large button" for="checkbox1" onclick="filter('Info&Support')">Information & Support</label>
+    <label class="large button" for="checkbox1" onclick="filter('All')">All Organisations</label>
+
+
+    <div>
+
+    </div>
+    @*</form>*@
 </div>
 <div class="center">
-    <div class="row small-up-2 large-up-4">
-        
-        @foreach (var organisation in Model)
+    <div id="orgList" class="row small-up-2 large-up-4">
+
+        @foreach (var organisation in Model.OrganisationArray)
         {
             @if (organisation.Type == 0)
             {
-
-                <div class="column">
+                <div id=@organisation.Id class="column js-company">
                     <a href="/organisation/index/@organisation.Id">
                         <div class="callout">
                             @if (@organisation.Logo != null)
@@ -53,14 +82,19 @@
                             }
                             <p><b>@organisation.Name</b></p>
                             <p class="subheader">@organisation.Summary</p>
-                            <div>@foreach (var tag in organisation.Tags)
+                            <div>
+                                @foreach (var tag in organisation.Tags)
                             {
-                                <label class="small" style="background-color: #f9b234">@tag.Title</label>
+                                <label class="small" style="background-color: #f9b234"><i class="fa fa-tag" aria-hidden="true"></i>@tag.Title</label>
+                                <div id="category" class="hidden" name="category">@tag.Cat</div>
+                                <script>
+                                    $('#@organisation.Id').addClass("@tag.Cat");
+                                </script>
                             }
-                            </div>
                         </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
+            </div>
 
             }
         }
@@ -71,10 +105,9 @@
     <a class="button hollow expanded">Load More</a>
 </div>
 
-<scripts>
-    <script src="~/js/vendor/jquery.js"></script>
-    <link href="~/css/app.css" rel="stylesheet" />
-    <link href="~/css/foundation.css" rel="stylesheet" />
-    <script src="~/js/vendor/foundation.js"></script>
-    <script src="~/js/app.js"></script>
-</scripts>
+@*<scripts>
+        <link href="~/css/app.css" rel="stylesheet" />
+        <link href="~/css/foundation.css" rel="stylesheet" />
+        <script src="~/js/vendor/foundation.js"></script>
+        <script src="~/js/app.js"></script>
+    </scripts>*@

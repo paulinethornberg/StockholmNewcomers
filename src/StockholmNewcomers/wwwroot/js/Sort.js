@@ -31,22 +31,20 @@ function filter(element) {
             $(organisations[i]).show();
         }
     }
-
-    function hideOrShow(organisations, catNum) {
-        for (i = 0; i < organisations.length; i++) {
-            if (!hasClass(organisations[i], catNum)) {
-                //item.className += temi.className ? ' hidden' : 'hidden';
-                //$(organisations[i]).addClass("hidden");
-                $(organisations[i]).hide();
-            }
-            else {
-                $(organisations[i]).show();
-                //item.classList.remove("hidden");
-            }
-        }
-
-    }
 }
+
+function hideOrShow(organisations, catNum) {
+    for (i = 0; i < organisations.length; i++) {
+        if (!hasClass(organisations[i], catNum)) {
+            $(organisations[i]).hide();
+        }
+        else {
+            $(organisations[i]).show();
+        }
+    }
+
+}
+
 
 function changeColor(id) {
     var btn = document.getElementById(id);
@@ -60,10 +58,10 @@ function changeColor(id) {
 function btnColor(btn) {
     if (btn.style.backgroundColor === "#f9b234") {
         btn.style.backgroundColor = "#e40b7c";
-    document.getElementById(id).style.backgroundColor = "#A9A9A9";
+        document.getElementById(id).style.backgroundColor = "#A9A9A9";
     } else {
         btn.style.backgroundColor = "#f9b234";
-    }c
+    } c
 }
 
 

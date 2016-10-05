@@ -7,7 +7,6 @@ namespace StockholmNewcomers.Models.Entities
     {
         public Organizations()
         {
-            OrganizationCategoryTags = new HashSet<OrganizationCategoryTags>();
             OrganizationsTags = new HashSet<OrganizationsTags>();
             TagsCategoryTags = new HashSet<TagsCategoryTags>();
         }
@@ -26,8 +25,8 @@ namespace StockholmNewcomers.Models.Entities
         public int? Ord { get; set; }
         public byte? Approve { get; set; }
         public DateTime? AddDate { get; set; }
+        public string Facebook { get; set; }
 
-        public virtual ICollection<OrganizationCategoryTags> OrganizationCategoryTags { get; set; }
         public virtual ICollection<OrganizationsTags> OrganizationsTags { get; set; }
         public virtual ICollection<TagsCategoryTags> TagsCategoryTags { get; set; }
     }

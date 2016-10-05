@@ -13,6 +13,6 @@ namespace StockholmNewcomers.Models.ViewModels
         public bool 
             Info { get; set; }
 
-        public AddOrganisationsVM[] OrganisationArray { get; set; }
+        public OrganisationVM[] OrganisationArray { get; set; }
     }
 }

@@ -76,7 +76,7 @@ a {
   color: #4527A0;
 }
 a:hover {
-  color: #7E57C2;
+  color: #222;
 }
 
 .m-main-header {
@@ -92,7 +92,7 @@ a:hover {
   border: 0;
   background: #ffffff;
   margin-top: -50px;
-  border-top: 5px solid #7E57C2;
+  border-top: 5px solid #222;
 }
 
 .form-group-material {
@@ -255,3 +255,70 @@ body {
 
 .hidden {
     display: none; }
+
+/*----------------------------------------------CSS FOR THE TAGS----------------------------------------------------------------*/
+
+/*body {
+  font: 12px/1.5 'PT Sans', serif;
+  margin: 25px;
+}*/
+
+.tags {
+  list-style: none;
+  margin: 0;
+  overflow: hidden; 
+  padding: 0;
+}
+
+.tags li {
+  float: left; 
+}
+
+.tag {
+  background: #f9b234;
+  border-radius: 1px 0 0 1px;
+  font-size: 80%;
+  color: #fff;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+}
+
+.tag::before {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+  content: '';
+  height: 6px;
+  left: 10px;
+  position: absolute;
+  width: 6px;
+  top: 10px;
+}
+
+.tag::after {
+  background: #fff;
+  border-bottom: 13px solid transparent;
+  border-left: 10px solid #f9b234;
+  border-top: 13px solid transparent;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.tag:hover {
+  background-color: #f9b234;
+  color: white;
+}
+
+.tag:hover::after {
+   border-left-color: #f9b234; 
+}
+
+/*----------------------------------------------END OF TAGS DESIGN----------------------------------------------------------------*/

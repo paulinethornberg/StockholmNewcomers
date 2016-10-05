@@ -36,12 +36,11 @@ namespace StockholmNewcomers.Controllers
             return View(addOrgVM);
         }
         [HttpPost]
-        public async Task<IActionResult> AddOrganisation(AddOrganisationsVM viewModel)
+        public IActionResult AddOrganisation(AddOrganisationVM viewModel)
 
         {
-
-
-            await dataManager.SaveOrganisationToDB(viewModel);
+            // MÅSTE GÖRA EN CHECK SÅ ATT INFON INTE ÄR SQL INJECTION :) 
+             dataManager.SaveOrganisationToDB(viewModel);
 
             return Content("The organisation will be reviewed and if accepted, the info will be added to the catalogue within a few days :) ");
         }

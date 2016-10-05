@@ -190,6 +190,27 @@ namespace StockholmNewcomers.Models.Entities
                     .HasColumnType("varchar(255)");
             });
 
+            modelBuilder.Entity<LocalactivitiesTags>(entity =>
+            {
+                entity.ToTable("localactivities_tags");
+
+                entity.Property(e => e.LocalactivityId).HasColumnName("localactivityID");
+
+                entity.Property(e => e.TagsId).HasColumnName("tagsId");
+
+                entity.HasOne(d => d.Localactivity)
+                    .WithMany(p => p.LocalactivitiesTags)
+                    .HasForeignKey(d => d.LocalactivityId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK__localacti__local__40F9A68C");
+
+                entity.HasOne(d => d.Tags)
+                    .WithMany(p => p.LocalactivitiesTags)
+                    .HasForeignKey(d => d.TagsId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK__localacti__tagsI__41EDCAC5");
+            });
+
             modelBuilder.Entity<Organisations>(entity =>
             {
                 entity.Property(e => e.DateAdded)
@@ -211,23 +232,6 @@ namespace StockholmNewcomers.Models.Entities
                 entity.Property(e => e.PhoneNumber).HasMaxLength(50);
 
                 entity.Property(e => e.Website).HasColumnType("nchar(50)");
-            });
-
-            modelBuilder.Entity<OrganizationCategoryTags>(entity =>
-            {
-                entity.ToTable("organization_categoryTags");
-
-                entity.HasOne(d => d.Organization)
-                    .WithMany(p => p.OrganizationCategoryTags)
-                    .HasForeignKey(d => d.OrganizationId)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("FK__organizat__Organ__30C33EC3");
-
-                entity.HasOne(d => d.TagsCategory)
-                    .WithMany(p => p.OrganizationCategoryTags)
-                    .HasForeignKey(d => d.TagsCategoryId)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("FK__organizat__TagsC__31B762FC");
             });
 
             modelBuilder.Entity<Organizations>(entity =>
@@ -254,6 +258,10 @@ namespace StockholmNewcomers.Models.Entities
 
                 entity.Property(e => e.Email)
                     .HasColumnName("email")
+                    .HasColumnType("varchar(255)");
+
+                entity.Property(e => e.Facebook)
+                    .HasColumnName("facebook")
                     .HasColumnType("varchar(255)");
 
                 entity.Property(e => e.Info)
@@ -453,8 +461,8 @@ namespace StockholmNewcomers.Models.Entities
         public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Localactivities> Localactivities { get; set; }
+        public virtual DbSet<LocalactivitiesTags> LocalactivitiesTags { get; set; }
         public virtual DbSet<Organisations> Organisations { get; set; }
-        public virtual DbSet<OrganizationCategoryTags> OrganizationCategoryTags { get; set; }
         public virtual DbSet<Organizations> Organizations { get; set; }
         public virtual DbSet<OrganizationsTags> OrganizationsTags { get; set; }
         public virtual DbSet<Socials> Socials { get; set; }

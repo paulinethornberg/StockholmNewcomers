@@ -1,5 +1,5 @@
 ﻿@model HomePageVM
-
+<link href="~/css/app.css" rel="stylesheet" />
 <link href="~/css/font-awesome.css" rel="stylesheet" />
 <script src="~/js/vendor/jquery.js"></script>
 <script src="~/js/Sort.js"></script>
@@ -10,7 +10,7 @@
         {
             <br />
         }
-        <h2>Share information about our community</h2>
+        <h2>Share information with the community</h2>
         <p>The purpose of this website is to share useful information about organisations and meetingsplaces where newcomers can come in contact with the local community and find support that isn't governmental</p>
     </div>
     <div class="medium-6 columns medium-pull-6">
@@ -87,12 +87,28 @@
                             <div>
                                 @foreach (var tag in organisation.Tags)
                                 {
-                                    <label class="small" style="background-color: #f9b234"><i class="fa fa-tag" aria-hidden="true"></i>@tag.Title</label>
+                                    @*<label class="small" style="background-color: #f9b234"><i class="fa fa-tag" aria-hidden="true"></i>@tag.Title</label>*@
+                                    <ul class="tags">
+                                        <li><a class="tag">@tag.Title</a></li>
+                                    </ul>
                                     <div id="category" class="hidden" name="category">@tag.Cat</div>
                                     <script>
                                         $('#@organisation.Id').addClass("@tag.Cat");
                                     </script>
                                 }
+                                @*@foreach (var tag in organisation.Tags)
+                                {
+                                    <label class="small" style="background-color: #f9b234"><i class="fa fa-tag" aria-hidden="true"></i>@tag.Title</label>
+                                    <div id="category" class="hidden" name="category">@tag.Cat</div>
+                                    <script>
+                                        $('#@organisation.Id').addClass("@tag.Cat");
+                                    </script>
+                                    <ul class="tags">
+                                        <li><a href="#" class="tag">HTML</a></li>
+                                        <li><a href="#" class="tag">CSS</a></li>
+                                        <li><a href="#" class="tag">JavaScript</a></li>
+                                    </ul>
+                                }*@
                             </div>
                         </div>
                     </a>

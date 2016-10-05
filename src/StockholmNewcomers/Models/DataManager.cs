@@ -29,7 +29,7 @@ namespace StockholmNewcomers.Models
             var allOrganizationTags = _context.OrganizationsTags.ToList();
 
             var organisations = _context.Organizations
-                .Select(c => new AddOrganisationsVM {
+                .Select(c => new OrganisationVM {
                     Name = c.Name,
                     Logo = c.Logo,
                     Description = c.Description,
@@ -96,22 +96,32 @@ namespace StockholmNewcomers.Models
             return orgArray;
         }
 
-        internal AddOrganisationsVM GetOrganisationFromId(int id)
+        internal OrganisationVM GetOrganisationFromId(int id)
         {
 
             var organisation = _context.Organizations
                  .Where(a => a.Id == id)
-                 .Select(c => new AddOrganisationsVM { Name = c.Name, Logo = c.Logo, Description = c.Description, Type = c.Type, Summary = c.Summary, Email = c.Email, Info = c.Info, Website = c.Website })
+                 .Select(c => new OrganisationVM { Name = c.Name, Logo = c.Logo, Description = c.Description, Type = c.Type, Summary = c.Summary, Email = c.Email, Info = c.Info, Website = c.Website })
                  .FirstOrDefault();
 
             return organisation;
         }
+        internal MeetingPlacesVM GetMeetingPlaceFromId(int id)
+        {
 
-        internal async Task SaveOrganisationToDB(AddOrganisationsVM viewModel)
+            var meetingPlace = _context.Localactivities
+                 .Where(a => a.Id == id)
+                 .Select(c => new MeetingPlacesVM { Name = c.Title, Logo = c.Logo, Description = c.Description, Summary = c.Summary, Email = c.Email, Info = c.Info, Website = c.Website })
+                 .FirstOrDefault();
+
+            return meetingPlace;
+        }
+
+        internal void SaveOrganisationToDB(AddOrganisationVM viewModel)
         {
             //make Organisations from ViewModel. 
 
-            var organisation = new Organisations
+            var organisation = new Organizations
             {
                 Id = viewModel.Id,
                 Name = viewModel.Name,
@@ -119,11 +129,14 @@ namespace StockholmNewcomers.Models
                 Description = viewModel.Description,
                 Summary = viewModel.Summary,
                 Website = viewModel.Website, 
-                Email = viewModel.Email,           
+                Email = viewModel.Email, 
+                Facebook = viewModel.Facebook                          
             };
 
-            _context.Organisations.Add(organisation);
+            _context.Organizations.Add(organisation);
             _context.SaveChanges();
+
+            //return true;
             
         }
 
@@ -132,7 +145,7 @@ namespace StockholmNewcomers.Models
 
             var allTags = GetTagsFromDB();
 
-            //var allMeetingPlaceTags = _context.ToList();
+            var allMeetingPlaceTags = _context.LocalactivitiesTags.ToList();
 
             var meetingPlaces = _context.Localactivities
                 .Select(c => new MeetingPlacesVM {
@@ -143,11 +156,28 @@ namespace StockholmNewcomers.Models
                     Info = c.Info,
                     Summary = c.Summary,
                     Logo = c.Logo,
-                    Website = c.Website
-                    })
+                    Website = c.Website,
+                    Tags = GetTagsForThisMeetingPlace(c.Id, allTags, allMeetingPlaceTags),
+                })
                 .ToArray();
 
             return meetingPlaces;
         }
+        private List<Tags> GetTagsForThisMeetingPlace(int Id, List<Tags> allTags, List<LocalactivitiesTags> allMeetingPlaceTags)
+        {
+            var tagIdList = allMeetingPlaceTags
+                 .Where(t => t.Id == Id)
+                 .Select(c => c.TagsId)
+                 .ToList();
+
+            List<Tags> taggarna = new List<Tags>();
+            foreach (int id in tagIdList)
+            {
+                taggarna.AddRange(allTags.Where(x => x.Id == id).ToList());
+            }
+            return taggarna;
+
+        }
+
     }
 }

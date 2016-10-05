@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockholmNewcomers.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,5 +18,6 @@ namespace StockholmNewcomers.Models.ViewModels
         public string Website { get; set; }
         public string Email { get; set; }
         public string Title { get; internal set; }
+        public List<Tags> Tags { get; set; }
     }
 }

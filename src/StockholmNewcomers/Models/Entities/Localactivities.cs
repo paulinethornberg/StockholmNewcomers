@@ -5,6 +5,11 @@ namespace StockholmNewcomers.Models.Entities
 {
     public partial class Localactivities
     {
+        public Localactivities()
+        {
+            LocalactivitiesTags = new HashSet<LocalactivitiesTags>();
+        }
+
         public int Id { get; set; }
         public short? Type { get; set; }
         public string Title { get; set; }
@@ -19,5 +24,7 @@ namespace StockholmNewcomers.Models.Entities
         public int? Ord { get; set; }
         public short? Approve { get; set; }
         public DateTime? AddDate { get; set; }
+
+        public virtual ICollection<LocalactivitiesTags> LocalactivitiesTags { get; set; }
     }
 }

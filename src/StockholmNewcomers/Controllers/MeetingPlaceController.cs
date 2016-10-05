@@ -22,6 +22,14 @@ namespace StockholmNewcomers.Controllers
             dataManager = new DataManager(context, userManager);
         }
 
+        public IActionResult Index(int id)
+        {
+            //hämta från databasen
+            var meetingPlace = dataManager.GetMeetingPlaceFromId(id);
+
+            return View(meetingPlace);
+        }
+
         public IActionResult MeetingPlaces()
         {
             //var meetingPlaces = dataManager.GetOrganisationsFromDB();

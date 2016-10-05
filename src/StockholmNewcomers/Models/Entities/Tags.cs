@@ -7,6 +7,7 @@ namespace StockholmNewcomers.Models.Entities
     {
         public Tags()
         {
+            LocalactivitiesTags = new HashSet<LocalactivitiesTags>();
             OrganizationsTags = new HashSet<OrganizationsTags>();
             TagsCategoryTags = new HashSet<TagsCategoryTags>();
         }
@@ -22,6 +23,7 @@ namespace StockholmNewcomers.Models.Entities
         public int? Ord { get; set; }
         public string Lang { get; set; }
 
+        public virtual ICollection<LocalactivitiesTags> LocalactivitiesTags { get; set; }
         public virtual ICollection<OrganizationsTags> OrganizationsTags { get; set; }
         public virtual ICollection<TagsCategoryTags> TagsCategoryTags { get; set; }
     }

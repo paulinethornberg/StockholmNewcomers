@@ -29,7 +29,7 @@ namespace StockholmNewcomers.Models
             var allOrganizationTags = _context.OrganizationsTags.ToList();
 
             var organisations = _context.Organizations
-                .Select(c => new OrganisationsVM {
+                .Select(c => new AddOrganisationsVM {
                     Name = c.Name,
                     Logo = c.Logo,
                     Description = c.Description,
@@ -96,18 +96,18 @@ namespace StockholmNewcomers.Models
             return orgArray;
         }
 
-        internal OrganisationsVM GetOrganisationFromId(int id)
+        internal AddOrganisationsVM GetOrganisationFromId(int id)
         {
 
             var organisation = _context.Organizations
                  .Where(a => a.Id == id)
-                 .Select(c => new OrganisationsVM { Name = c.Name, Logo = c.Logo, Description = c.Description, Type = c.Type, Summary = c.Summary, Email = c.Email, Info = c.Info, Website = c.Website })
+                 .Select(c => new AddOrganisationsVM { Name = c.Name, Logo = c.Logo, Description = c.Description, Type = c.Type, Summary = c.Summary, Email = c.Email, Info = c.Info, Website = c.Website })
                  .FirstOrDefault();
 
             return organisation;
         }
 
-        internal async Task SaveOrganisationToDB(OrganisationsVM viewModel)
+        internal async Task SaveOrganisationToDB(AddOrganisationsVM viewModel)
         {
             //make Organisations from ViewModel. 
 
@@ -129,6 +129,10 @@ namespace StockholmNewcomers.Models
 
         internal MeetingPlacesVM[] GetMeetingPlacesFromDB()
         {
+
+            var allTags = GetTagsFromDB();
+
+            //var allMeetingPlaceTags = _context.ToList();
 
             var meetingPlaces = _context.Localactivities
                 .Select(c => new MeetingPlacesVM {

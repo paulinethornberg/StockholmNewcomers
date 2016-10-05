@@ -36,7 +36,7 @@ namespace StockholmNewcomers.Controllers
             return View(addOrgVM);
         }
         [HttpPost]
-        public async Task<IActionResult> AddOrganisation(OrganisationsVM viewModel)
+        public async Task<IActionResult> AddOrganisation(AddOrganisationsVM viewModel)
 
         {
 

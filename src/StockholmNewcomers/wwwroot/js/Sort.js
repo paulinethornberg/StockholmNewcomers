@@ -50,7 +50,7 @@ function filter(element) {
 
 function changeColor(id) {
     var btn = document.getElementById(id);
-    if (btn.style.backgroundColor == "#f9b234") {
+    if (btn.style.backgroundColor === "#f9b234") {
         btn.style.backgroundColor = "#e40b7c";
     } else {
         btn.style.backgroundColor = "#f9b234";
@@ -58,7 +58,7 @@ function changeColor(id) {
 }
 
 function btnColor(btn) {
-    if (btn.style.backgroundColor == "#f9b234") {
+    if (btn.style.backgroundColor === "#f9b234") {
         btn.style.backgroundColor = "#e40b7c";
     document.getElementById(id).style.backgroundColor = "#A9A9A9";
     } else {

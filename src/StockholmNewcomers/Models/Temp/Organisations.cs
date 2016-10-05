@@ -1,12 +1,9 @@
-﻿using StockholmNewcomers.Models.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace StockholmNewcomers.Models.ViewModels
+namespace StockholmNewcomers.Models.Temp
 {
-    public class AddOrganisationsVM
+    public partial class Organisations
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -16,12 +13,7 @@ namespace StockholmNewcomers.Models.ViewModels
         public string Info { get; set; }
         public string Website { get; set; }
         public string Email { get; set; }
+        public byte[] DateAdded { get; set; }
         public string PhoneNumber { get; set; }
-        public int? Type { get; internal set; }
-
-
-        public int CategoryNumber { get; set; }
-         public List<TagsCategory> Categories { get; set; }
-        public List<Tags> Tags { get; set; }
     }
 }

@@ -38,12 +38,14 @@
         @* lägg till funktionalitet för att sortera med huvudtaggar: *@
 
         <br />
-        @*<input id="checkbox1" name ="checkResp" value="true" type="checkbox">
-            <label class="button" for="checkbox1">Language</label>
-            <input id="checkbox2" name ="checkResp" value="true" type="checkbox">
-            <label class="button" for="checkbox2">Community</label>
-            <input id="checkbox3" name ="checkResp" value="true" type="checkbox" >
-            <label class="button" for="checkbox3">Information & Support</label>*@
+        <input id="checkbox1" name="checkResp" value="true" type="radio" onclick="filter('Language')">
+        <label class="button" for="checkbox1">Language</label>
+        <input id="checkbox2" name="checkResp" value="true" type="radio" onclick="filter('Community')">
+        <label class="button" for="checkbox2">Community</label>
+        <input id="checkbox3" name="checkResp" value="true" type="radio" onclick="filter('Info&Support')">
+        <label class="button" for="checkbox3">Information & Support</label>
+        <input id="checkbox4" name="checkResp" value="true" type="radio" onclick="filter('All')">
+        <label class="button" for="checkbox4">All Organisations</label>
 
         @*<input asp-for="CheckBoxLanguage"  />
             <label asp-for="CheckBoxLanguage">Language</label>
@@ -51,10 +53,10 @@
             <input asp-for="CheckBoxInfo" />*@
     </div>
 
-    <label class="large button" id="button123" for="checkbox1" onclick="filter('Language'); changeColor(this)">Language</label>
-    <label class="large button" for="checkbox1" onclick="filter('Community')">Community</label>
-    <label class="large button" for="checkbox1" onclick="filter('Info&Support')">Information & Support</label>
-    <label class="large button" for="checkbox1" onclick="filter('All')">All Organisations</label>
+    @*<label class="large button" id="button123" for="checkbox1" onclick="filter('Language'); changeColor(this)">Language</label>
+        <label class="large button" for="checkbox1" onclick="filter('Community')">Community</label>
+        <label class="large button" for="checkbox1" onclick="filter('Info&Support')">Information & Support</label>
+        <label class="large button" for="checkbox1" onclick="filter('All')">All Organisations</label>*@
 
 
     <div>
@@ -84,17 +86,17 @@
                             <p class="subheader">@organisation.Summary</p>
                             <div>
                                 @foreach (var tag in organisation.Tags)
-                            {
-                                <label class="small" style="background-color: #f9b234"><i class="fa fa-tag" aria-hidden="true"></i>@tag.Title</label>
-                                <div id="category" class="hidden" name="category">@tag.Cat</div>
-                                <script>
-                                    $('#@organisation.Id').addClass("@tag.Cat");
-                                </script>
-                            }
+                                {
+                                    <label class="small" style="background-color: #f9b234"><i class="fa fa-tag" aria-hidden="true"></i>@tag.Title</label>
+                                    <div id="category" class="hidden" name="category">@tag.Cat</div>
+                                    <script>
+                                        $('#@organisation.Id').addClass("@tag.Cat");
+                                    </script>
+                                }
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
 
             }
         }

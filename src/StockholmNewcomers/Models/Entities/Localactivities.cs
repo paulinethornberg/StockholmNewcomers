@@ -24,6 +24,7 @@ namespace StockholmNewcomers.Models.Entities
         public int? Ord { get; set; }
         public short? Approve { get; set; }
         public DateTime? AddDate { get; set; }
+        public string Facebook { get; set; }
 
         public virtual ICollection<LocalactivitiesTags> LocalactivitiesTags { get; set; }
     }

@@ -1,4 +1,4 @@
-﻿@model AddOrganisationVM
+﻿@model AddMeetingPlaceVM
 <script src="~/js/Sort.js"></script>
 <br />
 <br />
@@ -14,7 +14,7 @@
     </div>
     <div class="row">
         <div class="small-12 columns">
-            <form method="post" action="AddOrganisation">
+            <form method="post" action="AddMeetingPlace">
                 <div class="row">
                     <div class="small-4 columns">
                         <p class="notice">
@@ -30,51 +30,80 @@
                 <div class="row">
                     <div class="small-4 columns">
                         <p class="notice">
-                            Summary
+                            Summary (max xxx characters)
                         </p>
                     </div>
                     <div class="small-8 columns">
                         <div class="form-group-material">
-                            <label class="material-label" for="name">Summary</label><input name="Summary" class="material-field" id="name" required="required" type="text">
+                            <label class="material-label" for="summary">Summary</label><input name="Summary" class="material-field" id="summary" required="required" type="text">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="small-4 columns">
                         <p class="notice">
-                            Input with an error
+                            Description (long)
                         </p>
                     </div>
                     <div class="small-8 columns">
-                        <div class="form-group-material error">
-                            <label class="material-label" for="firstname">Summary of activity/purpose (max 120 characters)</label><input class="material-field" id="firstname" type="text"><small class="error">Your firstname can't be a number.</small>
+                        <div class="form-group-material">
+                            <label class="material-label" for="Description">Description</label><textarea name="Description" class="material-field" id="description" required="required" type="text"></textarea>
                         </div>
                     </div>
                 </div>
+                @*<div class="row">
+            <div class="small-4 columns">
+                <p class="notice">
+                    Input with an error
+                </p>
+            </div>
+            <div class="small-8 columns">
+                <div class="form-group-material error">
+                    <label class="material-label" for="firstname">Summary of activity/purpose (max 120 characters)</label><input class="material-field" id="firstname" type="text"><small class="error">Your firstname can't be a number.</small>
+                </div>
+            </div>
+        </div>*@
                 <div class="row">
-                    <div class="small-4 columns"></div>
+                    <div class="small-4 columns">
+                        <p class="notice">
+                            Email
+                        </p>
+                    </div>
                     <div class="small-8 columns">
                         <div class="form-group-material">
-                            <label class="material-label" for="email">E-mail</label><input class="material-field" id="email" type="email">
+                            <label class="material-label" for="email">E-mail</label><input name="Email" class="material-field" id="email" type="email">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="small-4 columns">
                         <p class="notice">
-                            Inputs in any grid
+                            ContactInfo
                         </p>
+                    </div>
                     <div class="small-8 columns">
                         <div class="row">
                             <div class="small-8 columns">
                                 <div class="form-group-material">
-                                    <label class="material-label" for="city">Facebook</label><input class="material-field" id="city" type="text">
+                                    <label class="material-label" for="website">Website</label><input name="Website" class="material-field" id="website" type="text">
                                 </div>
                             </div>
                             <div class="small-4 columns">
                                 <div class="form-group-material">
-                                    <label class="material-label" for="zipcode">Twitter</label><input class="material-field" id="zipcode" type="number">
+                                    <label class="material-label" for="facebook">Facebook</label><input name="Facebook" class="material-field" id="facebook" type="text">
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <p class="notice">
+                                Image
+                            </p>
+                        </div>
+                        <div class="small-8 columns">
+                            <div class="form-group-material">
+                                <input type="file" id="uploadEditorImage" />
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,35 @@
 ﻿@model AddOrganisationVM
+<script src="~/js/vendor/jquery.js"></script>
+<script src="~/js/vendor/foundation.js"></script>
+<script src="~/js/app.js"></script>
 
+@*<style>
+
+    .form-group-material{
+        border: 10px solid red !important;
+    }
+    .PaOU {
+        border-top: none; 
+        border-left: none; 
+        border-right: 5px solid red;
+    }
+    .PaOU:active{
+        border-top: none; 
+        border-left: none; 
+        border-right: 5px solid green;
+    }
+        .PaOU:after{
+        border-top: none; 
+        border-left: none; 
+        border-right: 5px solid yellow !important;
+    }
+                .PaOU:before{
+        border-top: none; 
+        border-left: none; 
+        border-right: 5px solid yellow !important;
+    }
+
+</style>*@
 <br />
 <br />
 <div class="panel m-panel shadow">
@@ -22,8 +52,8 @@
                         </p>
                     </div>
                     <div class="small-8 columns">
-                        <div class="form-group-material">
-                            <label class="material-label" for="name">Name</label><input name="Name" class="material-field" id="name" required="required" type="text">
+                        <div class="form-group-material PaOU">
+                            <label class="material-label" for="name">Name</label><input name="Name" class="material-field" id="nameform" required="required" type="text">
                         </div>
                     </div>
                 </div>
@@ -35,7 +65,7 @@
                     </div>
                     <div class="small-8 columns">
                         <div class="form-group-material">
-                            <label class="material-label" for="summary">Summary</label><input name="Summary" class="material-field" id="summary" required="required" type="text">
+                            <label class="material-label" for="summary">Summary</label><input name="Summary" class="material-field" id="sumform" required="required" type="text">
                         </div>
                     </div>
                 </div>
@@ -47,7 +77,7 @@
                     </div>
                     <div class="small-8 columns">
                         <div class="form-group-material">
-                            <label class="material-label" for="Description">Description</label><textarea name="Description" class="material-field" id="description" required="required" type="text"></textarea>
+                            <label class="material-label" for="Description">Description</label><textarea name="Description" class="material-field" id="descriptionform" required="required" type="text"></textarea>
                         </div>
                     </div>
                 </div>
@@ -71,7 +101,7 @@
                     </div>
                     <div class="small-8 columns">
                         <div class="form-group-material">
-                            <label class="material-label" for="email">E-mail</label><input name="Email" class="material-field" id="email" type="email">
+                            <label class="material-label" for="email">E-mail</label><input name="Email" class="material-field" id="emailform" type="email">
                         </div>
                     </div>
                 </div>
@@ -85,12 +115,12 @@
                         <div class="row">
                             <div class="small-8 columns">
                                 <div class="form-group-material">
-                                    <label class="material-label" for="website">Website</label><input name="Website" class="material-field" id="website" type="text">
+                                    <label class="material-label" for="website">Website</label><input name="Website" class="material-field" id="websiteform" type="text">
                                 </div>
                             </div>
                             <div class="small-4 columns">
                                 <div class="form-group-material">
-                                    <label class="material-label" for="facebook">Facebook</label><input name="Facebook" class="material-field" id="facebook" type="text">
+                                    <label class="material-label" for="facebook">Facebook</label><input name="Facebook" class="material-field" id="facebookform" type="text">
                                 </div>
                             </div>
                         </div>
@@ -107,80 +137,67 @@
                             </div>
                         </div>
                     </div>
-                    @*<div class="row">
-                        <div class="small-4 columns">
-                            <p class="notice">
-                                Choose Tags:
-                            </p>
-                        </div>
-                        <div class="small-8 columns">
-                            <div class="form-group-material">
-                                
-                                    <select id="select" multiple>
-                                        <option></option>
-                                        @for (int i = 0; i < 26; i++)
-                                        {
-                                            <option value="@Model.Tags[i].Title"> @Model.Tags[i].Title</option>
-                                        }
-                                    </select>
-                            </div>
-                        </div>
+                    <h4><small>Add (max 3) tags to categorize the organisation or meeting place: </small></h4>
+
+                    <div class="button-group">
+                        @for (int i = 0; i < 26; i++)
+                        {
+                            <input id="@Model.Tags[i].Title" type="checkbox">
+                            <label class="button" name="Tags" for="checkbox1">@Model.Tags[i].Title</label>
+                        }
                     </div>
+
                     <div class="row">
-                        <div class="small-4 columns">
-                            <p class="notice">
-                                Choose Location: 
-                            </p>
-                        </div>
-                        <div class="small-8 columns">
-                            <div class="form-group-material">
-                                <select id="select" required>
-                                    <option></option>
-                                    @for (int i = 26; i < 62; i++)
-                                    {
-                                        <option value="@Model.Tags[i].Title"> @Model.Tags[i].Title</option>
-                                    }
-                                </select>
-                            </div>
+                        <div class="small-12 small-push-4 columns">
+                            <button>Send it !</button>
                         </div>
                     </div>
-                </div>*@
-                @*<label>
-
-                    <p>Choose tags for meetingplace:</p>
-                    <select>
-                        @for (int i = 0; i < 35; i++)
-                        {
-                            <option value="@Model.Tags[i].Title"> @Model.Tags[i].Title</option>
-                        }
-                    </select>
-                    Choose location:
-                    <select>
-                        @for (int i = 35; i < 71; i++)
-                        {
-                            <option value="@Model.Tags[i].Title"> @Model.Tags[i].Title</option>
-                        }
-                    </select>
-                </label>*@
-                <h4><small>Add (max 3) tags to categorize the organisation or meeting place: </small></h4>
-
-                <div class="button-group">
-                    @for (int i = 0; i < 26; i++)
-                    {
-                        <input id="@Model.Tags[i].Title" type="checkbox">
-                        <label class="button" for="checkbox1">@Model.Tags[i].Title</label>
-                    }
-                </div>
-
-                <div class="row">
-                    <div class="small-12 small-push-4 columns">
-                        <button>Send it !</button>
-                    </div>
-                </div>
             </form>
+     
         </div>
     </div>
-</div>
+
+    <button onclick="openPreview()" data-open="exampleModal1">Preview</button>
+    <p><a data-open="exampleModal1">Preview</a></p>
+    <div class="reveal" id="exampleModal1" data-reveal>
+        <div class="row">
+            <div class="medium-6 columns medium-push-6">
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <h2 id="namePreview"></h2>
+                <p id="summaryPreview">@Model.Info</p>
+                <p id="emailPreview">@Model.Email</p>
+                <p id="websitePreview">@Model.Website</p>
+            </div>
+            <div class="medium-6 columns medium-pull-6">
+                <img src="~/Images/Bilder/@Model.Logo" />
+            </div>
+        </div>
+
+        <div>
+            <p id="descriptionPreview"></p>
+        </div>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+        @*<div class="reveal" id="exampleModal1" data-reveal>
+            <h1 id="namePreview"></h1>
+            <p id="summaryPreview" class="lead"></p>
+            <p id="descriptionPreview"></p>
+            <p id="emailPreview"></p>
+            <p id="websitePreview"></p>
+            <p id="facebookPreview"></p>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>*@
+    </div>
 
 
 

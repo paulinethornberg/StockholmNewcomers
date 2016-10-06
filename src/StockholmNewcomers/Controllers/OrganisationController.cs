@@ -39,7 +39,10 @@ namespace StockholmNewcomers.Controllers
         public IActionResult AddOrganisation(AddOrganisationVM viewModel)
 
         {
-            // MÅSTE GÖRA EN CHECK SÅ ATT INFON INTE ÄR SQL INJECTION :) 
+            if (!ModelState.IsValid)
+                return View();
+
+             // MÅSTE GÖRA EN CHECK SÅ ATT INFON INTE ÄR SQL INJECTION :) 
              dataManager.SaveOrganisationToDB(viewModel);
 
             return Content("The organisation will be reviewed and if accepted, the info will be added to the catalogue within a few days :) ");

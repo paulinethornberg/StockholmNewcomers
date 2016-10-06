@@ -38,18 +38,21 @@ namespace StockholmNewcomers.Controllers
             return View(meetingPlaces);
         }
 
-        [HttpPost]
+        [HttpGet]
         public IActionResult AddMeetingPlace(MeetingPlacesVM viewModel)
         {
-            return View();
-        }
-
-        public IActionResult AddMeetingPlace()
-        {
             var tags = dataManager.GetTagsFromDB();
-            AddOrganisationVM addVM = new AddOrganisationVM();
-            addVM.Tags = tags;
-            return View(addVM);
+            AddMeetingPlaceVM addMPVM = new AddMeetingPlaceVM();
+            addMPVM.Tags = tags;
+            return View(addMPVM);
+
+        }
+        [HttpPost]
+        public IActionResult AddMeetingPlace(AddMeetingPlaceVM viewModel)
+        {
+            dataManager.SaveMeetingPlaceToDB(viewModel);
+
+            return Content("The organisation will be reviewed and if accepted, the info will be added to the catalogue within a few days :) ");
         }
 
     }

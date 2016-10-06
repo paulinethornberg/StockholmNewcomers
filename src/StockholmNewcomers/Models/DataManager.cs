@@ -140,6 +140,29 @@ namespace StockholmNewcomers.Models
             
         }
 
+        internal void SaveMeetingPlaceToDB(AddMeetingPlaceVM viewModel)
+        {
+            //make MeetingPlace from ViewModel. 
+
+            var meetingPlace = new Localactivities
+            {
+                Id = viewModel.Id,
+                Title = viewModel.Name,
+                Logo = viewModel.Logo,
+                Description = viewModel.Description,
+                Summary = viewModel.Summary,
+                Website = viewModel.Website,
+                Email = viewModel.Email,
+                Facebook = viewModel.Facebook
+            };
+
+            _context.Localactivities.Add(meetingPlace);
+            _context.SaveChanges();
+
+            //return true;
+
+        }
+
         internal MeetingPlacesVM[] GetMeetingPlacesFromDB()
         {
 

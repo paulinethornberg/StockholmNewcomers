@@ -18,6 +18,7 @@ namespace StockholmNewcomers.Models.ViewModels
         public string Website { get; set; }
         public string Email { get; set; }
         public string Title { get; internal set; }
+        public string Facebook { get; set; }
 
         public List<Tags> Tags { get; set; }
     }

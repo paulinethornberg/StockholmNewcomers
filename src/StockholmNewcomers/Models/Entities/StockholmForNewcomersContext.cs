@@ -159,6 +159,10 @@ namespace StockholmNewcomers.Models.Entities
                     .HasColumnName("email")
                     .HasColumnType("varchar(255)");
 
+                entity.Property(e => e.Facebook)
+                    .HasColumnName("facebook")
+                    .HasColumnType("varchar(255)");
+
                 entity.Property(e => e.Info)
                     .HasColumnName("info")
                     .HasColumnType("varchar(max)");

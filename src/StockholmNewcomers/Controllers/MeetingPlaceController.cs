@@ -58,8 +58,8 @@ namespace StockholmNewcomers.Controllers
         [HttpPost]
         public async Task<IActionResult> AddMeetingPlace(AddMeetingPlaceVM viewModel)
         {
-            if (!ModelState.IsValid)
-                return View();
+            if (!ModelState.IsValid || viewModel.HoneyBucket != null)
+                return View(viewModel);
 
             var images = Path.Combine(_environment.WebRootPath, "images/Bilder/Activities");
             foreach (var file in viewModel.Files)
@@ -75,7 +75,7 @@ namespace StockholmNewcomers.Controllers
             }
             dataManager.SaveMeetingPlaceToDB(viewModel);
 
-            return View();
+            return RedirectToAction("AddMeetingPlace");
         }
 
     }

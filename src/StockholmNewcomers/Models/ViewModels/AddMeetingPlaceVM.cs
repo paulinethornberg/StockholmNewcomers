@@ -21,6 +21,7 @@ namespace StockholmNewcomers.Models.ViewModels
         public string Email { get; set; }
         public string Title { get; internal set; }
         public string Facebook { get; set; }
+        public string HoneyBucket { get; set; }
 
         //[ImageValidatorAttribute]
         public ICollection<IFormFile> Files { get; set; }

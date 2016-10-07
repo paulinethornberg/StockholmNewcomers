@@ -43,9 +43,9 @@ namespace StockholmNewcomers.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> AddOrganisation(AddOrganisationVM viewModel)
-
         {
-            if (!ModelState.IsValid)
+            //check if viewModel is valid && check HoneyBucket for bots & avoid spam
+            if (!ModelState.IsValid || viewModel.HoneyBucket != null)
                 return View(viewModel);
 
             var images = Path.Combine(_environment.WebRootPath, "images/Bilder");

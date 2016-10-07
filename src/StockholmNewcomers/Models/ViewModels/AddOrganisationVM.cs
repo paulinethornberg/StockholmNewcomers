@@ -23,6 +23,8 @@ namespace StockholmNewcomers.Models.ViewModels
         public string Title { get; internal set; }
         public string Facebook { get; internal set; }
 
+        public string HoneyBucket { get; set; }
+
         //[FileExtensions(Extensions = ".jpeg, .png", ErrorMessage = "Please select a file with the right format.")]
 
         public ICollection<IFormFile> Files { get; set; }

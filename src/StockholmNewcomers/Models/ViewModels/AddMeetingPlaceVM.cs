@@ -1,4 +1,6 @@
-﻿using StockholmNewcomers.Models.Entities;
+﻿using Microsoft.AspNetCore.Http;
+using StockholmNewcomers.Models.Attributes;
+using StockholmNewcomers.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +21,9 @@ namespace StockholmNewcomers.Models.ViewModels
         public string Email { get; set; }
         public string Title { get; internal set; }
         public string Facebook { get; set; }
+
+        //[ImageValidatorAttribute]
+        public ICollection<IFormFile> Files { get; set; }
 
         public List<Tags> Tags { get; set; }
     }

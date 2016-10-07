@@ -8,6 +8,8 @@ using StockholmNewcomers.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using StockholmNewcomers.Models.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,9 +19,13 @@ namespace StockholmNewcomers.Controllers
     {
         // GET: /<controller>/
         DataManager dataManager;
-        public OrganisationController(StockholmForNewcomersContext context, UserManager<IdentityUser> userManager)
+        private IHostingEnvironment _environment;
+
+        public OrganisationController(StockholmForNewcomersContext context, UserManager<IdentityUser> userManager, IHostingEnvironment environment)
         {
             dataManager = new DataManager(context, userManager);
+            _environment = environment;
+
         }
         public IActionResult Index(int id)
         {
@@ -36,16 +42,29 @@ namespace StockholmNewcomers.Controllers
             return View(addOrgVM);
         }
         [HttpPost]
-        public IActionResult AddOrganisation(AddOrganisationVM viewModel)
+        public async Task<IActionResult> AddOrganisation(AddOrganisationVM viewModel)
 
         {
             if (!ModelState.IsValid)
-                return View();
+                return View(viewModel);
 
-             // MÅSTE GÖRA EN CHECK SÅ ATT INFON INTE ÄR SQL INJECTION :) 
-             dataManager.SaveOrganisationToDB(viewModel);
+            var images = Path.Combine(_environment.WebRootPath, "images/Bilder");
+            foreach (var file in viewModel.Files)
+            {
+                if (file.Length > 0)
+                {
+                    using (var fileStream = new FileStream(Path.Combine(images, file.FileName), FileMode.Create))
+                    {
+                        await file.CopyToAsync(fileStream);
+                        viewModel.Logo = file.FileName;
+                    }
+                }
+            }
+           
+            // MÅSTE GÖRA EN CHECK SÅ ATT INFON INTE ÄR SQL INJECTION :) 
+            dataManager.SaveOrganisationToDB(viewModel);
 
-            return Content("The organisation will be reviewed and if accepted, the info will be added to the catalogue within a few days :) ");
+            return RedirectToAction("AddOrganisation");
         }
 
         public IActionResult GetResultByCategory(string checkbox1, bool checkResp = false)

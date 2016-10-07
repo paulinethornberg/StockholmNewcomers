@@ -14,7 +14,7 @@
     </div>
     <div class="row">
         <div class="small-12 columns">
-            <form method="post" action="AddMeetingPlace">
+            <form method="post" action="AddMeetingPlace" enctype="multipart/form-data">
                 <div class="row">
                     <div class="small-4 columns">
                         <p class="notice">
@@ -103,7 +103,7 @@
                         </div>
                         <div class="small-8 columns">
                             <div class="form-group-material">
-                                <input type="file" id="uploadEditorImage" />
+                                <input type="file" name="Files" multiple />
                             </div>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
 
                 <div class="row">
                     <div class="small-12 small-push-4 columns">
-                        <button>Send it !</button>
+                        <button value="Upload">Submit!</button>
                     </div>
                 </div>
             </form>

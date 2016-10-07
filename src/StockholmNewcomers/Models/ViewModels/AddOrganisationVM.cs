@@ -1,7 +1,10 @@
-﻿using StockholmNewcomers.Models.Entities;
+﻿using Microsoft.AspNetCore.Http;
+using StockholmNewcomers.Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace StockholmNewcomers.Models.ViewModels
@@ -19,6 +22,10 @@ namespace StockholmNewcomers.Models.ViewModels
         public string Email { get; set; }
         public string Title { get; internal set; }
         public string Facebook { get; internal set; }
+
+        //[FileExtensions(Extensions = ".jpeg, .png", ErrorMessage = "Please select a file with the right format.")]
+
+        public ICollection<IFormFile> Files { get; set; }
 
         public List<Tags> Tags { get; set; }
     }

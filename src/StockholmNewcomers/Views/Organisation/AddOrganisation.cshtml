@@ -2,34 +2,6 @@
 <script src="~/js/vendor/jquery.js"></script>
 <script src="~/js/vendor/foundation.js"></script>
 <script src="~/js/app.js"></script>
-
-@*<style>
-
-    .form-group-material{
-        border: 10px solid red !important;
-    }
-    .PaOU {
-        border-top: none; 
-        border-left: none; 
-        border-right: 5px solid red;
-    }
-    .PaOU:active{
-        border-top: none; 
-        border-left: none; 
-        border-right: 5px solid green;
-    }
-        .PaOU:after{
-        border-top: none; 
-        border-left: none; 
-        border-right: 5px solid yellow !important;
-    }
-                .PaOU:before{
-        border-top: none; 
-        border-left: none; 
-        border-right: 5px solid yellow !important;
-    }
-
-</style>*@
 <br />
 <br />
 <div class="panel m-panel shadow">
@@ -44,7 +16,7 @@
     </div>
     <div class="row">
         <div class="small-12 columns">
-            <form method="post" action="AddOrganisation">
+            <form method="post" action="AddOrganisation"  enctype="multipart/form-data">
                 <div class="row">
                     <div class="small-4 columns">
                         <p class="notice">
@@ -133,14 +105,15 @@
                         </div>
                         <div class="small-8 columns">
                             <div class="form-group-material">
-                                <input type="file" id="uploadEditorImage" />
+                                @*<input type="file" id="uploadEditorImage" name="Files" />*@
+                                    <input type="file" name="Files" multiple/>
                             </div>
                         </div>
                     </div>
                     <h4><small>Add (max 3) tags to categorize the organisation or meeting place: </small></h4>
 
                     <div class="button-group">
-                        @for (int i = 0; i < 26; i++)
+                        @for (int i = 0; i < 26 && i<Model.Tags.Count; i++)
                         {
                             <input id="@Model.Tags[i].Title" type="checkbox">
                             <label class="button" name="Tags" for="checkbox1">@Model.Tags[i].Title</label>

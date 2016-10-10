@@ -58,7 +58,7 @@ footer{
 
 .button-group input:checked + label,
 .button-group input:checked + label:active {
-  background-color: #e40b7c;
+  background-color: #f9b234;
 }
 
 
@@ -184,10 +184,10 @@ input.material-field:focus, textarea.material-field:focus {
 }
 
 button {
-  border-radius: 3px;
+  border-radius: 0px;
   padding: 8px 18px;
   font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: #E91E63;
+  background: #f9b234;
 }
 button:hover {
   background: #f27ba3;
@@ -270,14 +270,15 @@ body {
   padding: 0;
 }
 
-.tags li {
+/*.tags li {
   float: left; 
-}
+}*/
 
 .tag {
   background: #f9b234;
   border-radius: 1px 0 0 1px;
   font-size: 80%;
+  font-family: "Helvetica Neue", arial, sans-serif;
   color: #fff;
   display: inline-block;
   height: 26px;
@@ -327,3 +328,11 @@ body {
 /*.fake_email{
     display: none;
 }*/
+
+.sticky {
+  width: 100%;
+  position: relative
+}
+.row {
+    min-width:100% !important;
+}

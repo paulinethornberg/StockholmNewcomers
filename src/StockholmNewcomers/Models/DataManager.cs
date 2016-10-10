@@ -40,6 +40,7 @@ namespace StockholmNewcomers.Models
                     Info = c.Info ,
                     Website = c.Website,
                     Tags = GetTagsForThisOrganization(c.Id,allTags,allOrganizationTags),
+                    Approve = c.Approve
                     })
                 .ToArray();
 
@@ -111,7 +112,14 @@ namespace StockholmNewcomers.Models
 
             var meetingPlace = _context.Localactivities
                  .Where(a => a.Id == id)
-                 .Select(c => new MeetingPlacesVM { Name = c.Title, Logo = c.Logo, Description = c.Description, Summary = c.Summary, Email = c.Email, Info = c.Info, Website = c.Website })
+                 .Select(c => new MeetingPlacesVM {
+                     Name = c.Title,
+                     Logo = c.Logo,
+                     Description = c.Description,
+                     Summary = c.Summary,
+                     Email = c.Email,
+                     Info = c.Info,
+                     Website = c.Website })
                  .FirstOrDefault();
 
             return meetingPlace;
@@ -181,6 +189,7 @@ namespace StockholmNewcomers.Models
                     Logo = c.Logo,
                     Website = c.Website,
                     Tags = GetTagsForThisMeetingPlace(c.Id, allTags, allMeetingPlaceTags),
+                    Approve = c.Approve
                 })
                 .ToArray();
 

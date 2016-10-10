@@ -12,10 +12,13 @@ namespace StockholmNewcomers.Models.ViewModels
     public class AddOrganisationVM
     {
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
         public string Logo { get; set; }
         public string Cover { get; set; }
+        [Required]
         public string Description { get; set; }
+        [Required]
         public string Summary { get; set; }
         public string Info { get; set; }
         public string Website { get; set; }

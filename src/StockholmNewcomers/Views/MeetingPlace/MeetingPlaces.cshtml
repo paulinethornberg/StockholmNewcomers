@@ -11,10 +11,10 @@
 <div class="row column">
 
     <p class="lead"><b>Find meetingplaces by category and location: </b> </p>
-   
+
     <div class="button-group">
 
-               <br />
+        <br />
         <input id="checkbox1" name="checkResp" value="true" type="radio" onclick="filter('Language')">
         <label class="button" for="checkbox1">Language</label>
         <input id="checkbox2" name="checkResp" value="true" type="radio" onclick="filter('Community')">
@@ -26,11 +26,13 @@
 
     </div>
 
-  
+
 </div>
 <div id="orgList" class="row small-up-2 large-up-4">
     @foreach (var meetingPlace in Model)
     {
+        @if (meetingPlace.Approve == 1)
+        {
             <div id=@meetingPlace.Id class="column js-company">
                 <a href="/meetingplace/index/@meetingPlace.Id">
                     <div class="callout">
@@ -61,8 +63,9 @@
                     </div>
                 </a>
 
-</div>
+            </div>
         }
+    }
 
 </div>
 <div class="row column">

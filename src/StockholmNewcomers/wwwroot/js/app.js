@@ -1,4 +1,4 @@
-
+$(document).foundation();
 //$("#menu").click(function () {
 //    $("#menu").removeClass('none')
 //});
@@ -7,8 +7,6 @@
 //    $(this).removeClass('none');
 //    $(this).siblings().addClass('none');
 //});
-
-$(document).foundation();
 
 function openPreview() {
     document.getElementById("namePreview").innerHTML = document.getElementById("nameform").value;
@@ -44,3 +42,9 @@ $('li').click(function () {
         return materialForm();
     });
 }.call(this));
+
+//--------------------------- MIXITUP TOOL -------------------------------------
+$(function () {
+    $('#Container').mixItUp();
+});
+

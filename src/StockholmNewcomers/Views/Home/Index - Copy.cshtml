@@ -1,0 +1,82 @@
+﻿@model HomePageVM
+<link href="~/css/app.css" rel="stylesheet" />
+@*<link href="~/css/MixItUp.css" rel="stylesheet" />*@
+<link href="~/css/font-awesome.css" rel="stylesheet" />
+<script src="~/js/vendor/jquery.js"></script>
+<script src="~/js/Sort.js"></script>
+
+
+<div class="row">
+    <div class="medium-6 columns medium-push-6">
+        @for (int i = 0; i < 6; i++)
+        {
+            <br />
+        }
+        <h2>Share information with the community</h2>
+        <p>The purpose of this website is to share useful information about organisations and meetingsplaces where newcomers can come in contact with the local community and find support that isn't governmental</p>
+    </div>
+    <div class="medium-6 columns medium-pull-6">
+        <img src="~/Images/logo.jpg" />
+    </div>
+</div>
+<div class="controls">
+    <label>Sort organisations by category:</label>
+
+    <button class="filter" data-filter="all">All</button>
+    <button class="filter" data-filter=".category-4">Language</button>
+    <button class="filter" data-filter=".category-2">Community</button>
+    <button class="filter" data-filter=".category-3">Information & Support</button>
+
+    @*<label>Sort:</label>
+
+        <button class="sort" data-sort="myorder:asc">Asc</button>
+        <button class="sort" data-sort="myorder:desc">Desc</button>*@
+</div>
+<div class="center">
+    <div id="Container" class="container">
+        <div id="orgList" class="row small-up-2 large-up-4">
+
+            @foreach (var organisation in Model.OrganisationArray)
+            {
+                @if (organisation.Type == 0 && organisation.Approve == 1)
+                {
+                    <div id=@organisation.Id class="column js-company">
+                        <a href="/organisation/index/@organisation.Id">
+                            <div class="callout content">
+                                @if (@organisation.Logo != null)
+                    {
+                                    <p><img src="~/Images/Bilder/@organisation.Logo" /></p>
+                                }
+                                else
+                                {
+                                    <p><img src="~/Images/Illustrations/people.jpg"></p>
+                                }
+                                <p><b>@organisation.Name</b></p>
+                                <p class="subheader">@Html.Raw(organisation.Summary)</p>
+                                <div>
+                                    @foreach (var tag in organisation.Tags)
+                                    {
+                                        <p class="tag">@tag.Title</p>
+                                        @*<label class="small" style="background-color: #f9b234"><i class="fa fa-tag" aria-hidden="true"></i>@tag.Title</label>*@
+                                        @*<ul class="tags">
+                                                <li><p class="tag">@tag.Title</p></li>
+                                            </ul>*@
+                                        <div id="category" class="hidden" name="category">@tag.Cat</div>
+                                        <script>
+                                            $('#@organisation.Id').addClass("mix category-" + "@tag.Cat");
+                                        </script>
+                                    }
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                }
+            }
+
+        </div>
+
+        <div class="gap"></div>
+        <div class="gap"></div>
+    </div>
+</div>
